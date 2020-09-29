@@ -1,48 +1,122 @@
-/*
- _____ ____ _____   ____ _____ ____  
-| ____/ ___| ____| |___ \___  | ___| 
-|  _|| |   |  _|     __) | / /|___ \ 
-| |__| |___| |___   / __/ / /  ___) |
-|_____\____|_____| |_____/_/  |____/ 
-                                     
- _   _                                         _      _ 
-| | | | ___  _ __ ___   _____      _____  _ __| | __ / |
-| |_| |/ _ \| '_ ` _ \ / _ \ \ /\ / / _ \| '__| |/ / | |
-|  _  | (_) | | | | | |  __/\ V  V / (_) | |  |   <  | |
-|_| |_|\___/|_| |_| |_|\___| \_/\_/ \___/|_|  |_|\_\ |_|
- 
- 
-Aww Geez Man: Interdimensional Mortys.
-
-One of Morty C137's favorite phrases is "Aww Geez Man". But, in dimension Z286, there
-exists a Morty who says everything backwards.
-
-*/
-
-// Include the Morty header file
 #include "Morty.hpp"
+#include <string> 
+#include <iostream>
+#include <fstream>
+#include <string>
+#include<cstring>
+#include<stdlib.h>
+
+int main(int ac, char** av) {
 
 
-int main (int ac, char** av) {
-	// Parse the command line arguments. The program is executed as
-	// ./AwwGeezMan {start} {stop} {dimension}
-	// or 
-	// ./AwwGeezMan {start} {stop} {step} {dimension}
+
 	if (ac != 4 and ac != 5) {
-		std::cout << "Error: Command line arguments are incorrect. Call program as (1) or (2)" 
+		std::cout << "Error: Command line arguments are incorrect. Call program as (1) or (2)"
 			<< std::endl;
 		std::cout << "(1)\t./AwwGeezMan {start} {stop} {dimension}" << std::endl;
 		std::cout << "(2)\t./AwwGeezMan {start} {stop} {step} {dimension}" << std::endl;
-		
+
 		return -1;
 	}
+
+
+	interdimensional::args x = interdimensional::parseArgs(ac, av);
+
 	
-	// Parse the command line arguments
+	if (x.dim == -1) {
+		cout << "Error: Unknown Dimension!!" << endl;
+	}
 	
+
+	else if (ac == 4) {
+
 		
-	// Depending on the dimension of the arguments, call the appropriate Morty
-	// function
+		
+			cout << "Morty " << av[3] << " says:" << "\n";
+
+
+
+			if (x.dim==1) {
+
+
+
+				Z286::Morty(stoi(av[1]), stoi(av[2]));
+
+
+			}
+
+			else if (x.dim == 0) {
+
+				C137::Morty(stoi(av[1]), stoi(av[2]));
+
+
+			}
+		
+
+		//else {
+			//cout << "Error: Unknown Dimension!!" << endl;
+		//}
+
+
+	}
+
+
+
+
 	
-	
+
+	else if (ac == 5) {
+
+
+		
+			cout << "Morty " << av[4] << " says:" << "\n";
+
+
+
+			if (x.dim == 1) {
+
+				Z286::Morty(stoi(av[1]), stoi(av[2]), stoi(av[3]));
+
+
+			}
+
+			else if (x.dim == 0) {
+
+				C137::Morty(stoi(av[1]), stoi(av[2]), stoi(av[3]));
+
+
+			}
+		
+
+		//else {
+			//cout << "Error: Unknown Dimension!!" << endl;
+
+//		}
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
 	return 0;
+
+
+
+
+
+
+
+
+
+
+
+
 }
