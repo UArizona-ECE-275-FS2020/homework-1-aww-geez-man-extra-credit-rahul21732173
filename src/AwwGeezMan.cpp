@@ -24,7 +24,7 @@ int main(int ac, char** av) {
 
 	
 	if (x.dim == -1) {
-		cout << "Error: Unknown Dimension!!" << endl;
+		cout << "ERROR: Unknown dimension!!" << endl;
 	}
 	
 
